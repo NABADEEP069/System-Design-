@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mini Chat</title>
+</head>
+<body>
+  <h3>Redis Chat</h3>
+  <input id="input" placeholder="Type message..." />
+  <button onclick="send()">Send</button>
+  <ul id="messages"></ul>
+
+  <script>
+    const ws = new WebSocket("ws://localhost:3000");
+
+    ws.onmessage = (event) => {
+      const li = document.createElement("li");
+      li.textContent = event.data;
+      document.getElementById("messages").appendChild(li);
+    };
+
+    function send() {
+      const input = document.getElementById("input");
+      ws.send(input.value);
+      input.value = '';
+    }
+  </script>
+</body>
+</html>
