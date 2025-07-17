@@ -1,7 +1,7 @@
 const Redis = require('ioredis');
 
-const subscriber = new Redis(); // listens
-const publisher = new Redis();  // sends
+const subscriber = new Redis(); 
+const publisher = new Redis(); 
 
 subscriber.subscribe('mychannel', (err, count) => {
   if (err) throw err;
@@ -13,5 +13,8 @@ subscriber.on('message', (channel, message) => {
 });
 
 setTimeout(() => {
-  publisher.publish('mychannel', '🔔 Hello, real-time world!');
+  publisher.publish('mychannel', ' Hello, from Nabadeep ');
 }, 2000);
+
+
+
