@@ -19,7 +19,7 @@ subscriber.on('message', (channel, message) => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(message);
     }
-  });
+  });      
 });
 wss.on('connection', (ws) => {
   console.log('Client connected');
